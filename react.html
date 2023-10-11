@@ -17,16 +17,36 @@
 
     <div id="target">Your time</div>
     <div id="counter">Count</div>
-    <button type="button" id="start">Start Timer</button>
-    <button type="button" id="react" onclick="recordTime()">React</button>
+    <button id="start">Start Timer</button>
+    <button id="react">React</button>
     <script>
-        var reactTime = undefined;
+        let reactTime = undefined;
+       
         function recordTime(){
             reactTime=Date.now();
-            console.log("React time:",reactTime);
+            console.log(reactTime);
         }
-        const start=document.getElementById('start');
-        const react=document.getElementById('react');
+        document.getElementById("react").onclick= recordTime;
+        
+        function startTime(){
+            for(let i=0;i<9;i++){
+                setTimeout(()=>{
+                    document.getElementById("counter").innerHTML=i;
+                }, (8-i)*1000);
+            }
+            setTimeout(()=>{
+                if(reactTime === undefined){
+                    document.getElementById("target").innerHTML="Too Slow";
+                }
+                else{
+                    let endTime= Date.now();
+                    let elapsing_time= endTime - reactTime;
+                    document.getElementById("target").innerHTML ="Time was "+elapsing_time;
+                }
+            },8000);
+        }
+        
+        document.getElementById("start").onclick=startTime;
         function buttonPress1() {
             setTimeout(function () {
                 document.getElementById('target').style.color = "red"
