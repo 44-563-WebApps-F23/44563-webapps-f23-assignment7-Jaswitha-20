@@ -21,32 +21,32 @@
     <button id="react">React</button>
     <script>
         let reactTime = undefined;
-       
-        function recordTime(){
-            reactTime=Date.now();
+
+        function recordTime() {
+            reactTime = Date.now();
             console.log(reactTime);
         }
-        document.getElementById("react").onclick= recordTime;
-        
-        function startTime(){
-            for(let i=0;i<9;i++){
-                setTimeout(()=>{
-                    document.getElementById("counter").innerHTML=i;
-                }, (8-i)*1000);
+        document.getElementById("react").onclick = recordTime;
+
+        function startTime() {
+            for (let i = 0; i < 9; i++) {
+                setTimeout(() => {
+                    document.getElementById("counter").innerHTML = i;
+                }, (8 - i) * 1000);
             }
-            setTimeout(()=>{
-                if(reactTime === undefined){
-                    document.getElementById("target").innerHTML="Too Slow";
+            setTimeout(() => {
+                if (reactTime === undefined) {
+                    document.getElementById("target").innerHTML = "Too Slow";
                 }
-                else{
-                    let endTime= Date.now();
-                    let elapsing_time= endTime - reactTime;
-                    document.getElementById("target").innerHTML ="Time was "+elapsing_time;
+                else {
+                    let endTime = Date.now();
+                    let elapsing_time = endTime - reactTime;
+                    document.getElementById("target").innerHTML = "Time was " + elapsing_time;
                 }
-            },8000);
+            }, 8000);
         }
-        
-        document.getElementById("start").onclick=startTime;
+        document.getElementById("start").onclick = startTime;
+       
         function buttonPress1() {
             setTimeout(function () {
                 document.getElementById('target').style.color = "red"
